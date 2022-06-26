@@ -40,7 +40,7 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Orthodox)
         if year >= 1991:
-            self[date(year, JAN, 7)] = "Різдво Христове" " (православне)"
+            self[date(year, JAN, 7)] = "Різдво Христове (православне)"
 
         # Women's Day
         if year > 1965:
@@ -48,7 +48,7 @@ class Ukraine(HolidayBase):
 
         # Easter
         if year >= 1991:
-            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха" " (Великдень)"
+            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
 
         # Holy trinity
         if year >= 1991:
@@ -67,15 +67,21 @@ class Ukraine(HolidayBase):
 
         # Victory Day
         name = "День перемоги"
-        if year >= 1965:
+        if 1965 < year < 2015:
             self[date(year, MAY, 9)] = name
         if 1945 <= year < 1947:
             self[date(year, MAY, 9)] = name
             self[date(year, SEP, 3)] = "День перемоги над Японією"
+        if year >= 2015:
+            self[date(year, MAY, 9)] = "День перемоги над нацизмом у Другій світовій війні"
 
         # Constitution Day
         if year >= 1997:
             self[date(year, JUN, 28)] = "День Конституції України"
+
+        # Day of Ukrainian Statehood
+        if year >= 2022:
+            self[date(year, JUL, 28)] = "День Української Державності"
 
         # Independence Day
         name = "День незалежності України"
@@ -98,7 +104,7 @@ class Ukraine(HolidayBase):
         # October Revolution
         if 1917 < year < 2000:
             if year <= 1991:
-                name = "Річниця Великої Жовтневої" " соціалістичної революції"
+                name = "Річниця Великої Жовтневої Cоціалістичної Революції"
             else:
                 name = "Річниця жовтневого перевороту"
             self[date(year, NOV, 7)] = name
@@ -106,7 +112,8 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Catholic)
         if year >= 2017:
-            self[date(year, DEC, 25)] = "Різдво Христове" " (католицьке)"
+            self[date(year, DEC, 25)] = "Різдво Христове (католицьке)"
+
         # USSR holidays
         # Bloody_Sunday_(1905)
         if 1917 <= year < 1951:
