@@ -30,7 +30,7 @@ class Ukraine(HolidayBase):
 
     def _populate(self, year):
         # The current set of holidays came into force in 1991
-        # But most holiday days was inplemented in 1981
+        # But most holiday days were implemented in 1918
         if year < 1918:
             return
 
@@ -43,36 +43,37 @@ class Ukraine(HolidayBase):
             self[date(year, JAN, 7)] = "Різдво Христове (православне)"
 
         # Women's Day
-        if year > 1965:
+        if year >= 1966:
             self[date(year, MAR, 8)] = "Міжнародний жіночий день"
 
         # Easter
         if year >= 1991:
-            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
+            self[easter(year, method=EASTER_ORTHODOX)] = "Великдень (Пасха)"
 
         # Holy trinity
         if year >= 1991:
             self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
 
         # Labour Day
-        if year > 2017:
+        if year >= 2018:
             name = "День праці"
-        elif 1917 < year <= 2017:
+        elif 1918 <= year <= 2017:
             name = "День міжнародної солідарності трудящих"
         self[date(year, MAY, 1)] = name
 
         # Labour Day in past
-        if 1928 < year < 2018:
+        if 1929 <= year <= 2017:
             self[date(year, MAY, 2)] = "День міжнародної солідарності трудящих"
 
         # Victory Day
         name = "День перемоги"
-        if 1965 < year < 2015:
-            self[date(year, MAY, 9)] = name
-        if 1945 <= year < 1947:
+
+        if 1945 <= year <= 1946:
             self[date(year, MAY, 9)] = name
             self[date(year, SEP, 3)] = "День перемоги над Японією"
-        if year >= 2015:
+        elif 1965 <= year <= 2015:
+            self[date(year, MAY, 9)] = name
+        elif year >= 2016:
             self[date(year, MAY, 9)] = "День перемоги над нацизмом у Другій світовій війні"
 
         # Constitution Day
@@ -85,7 +86,7 @@ class Ukraine(HolidayBase):
 
         # Independence Day
         name = "День незалежності України"
-        if year > 1991:
+        if year >= 1992:
             self[date(year, AUG, 24)] = name
         elif year == 1991:
             self[date(year, JUL, 16)] = name
@@ -96,13 +97,13 @@ class Ukraine(HolidayBase):
 
         # USSR Constitution day
         name = "День Конституції СРСР"
-        if 1981 <= year < 1991:
+        if 1981 <= year <= 1990:
             self[date(year, OCT, 7)] = name
-        elif 1937 <= year < 1981:
+        elif 1937 <= year <= 1980:
             self[date(year, DEC, 5)] = name
 
         # October Revolution
-        if 1917 < year < 2000:
+        if 1918 <= year <= 1999:
             if year <= 1991:
                 name = "Річниця Великої Жовтневої Cоціалістичної Революції"
             else:
@@ -116,11 +117,11 @@ class Ukraine(HolidayBase):
 
         # USSR holidays
         # Bloody_Sunday_(1905)
-        if 1917 <= year < 1951:
+        if 1917 <= year <= 1950:
             self[date(year, JAN, 22)] = "День пам'яті 9 січня 1905 року"
 
         # Paris_Commune
-        if 1917 < year < 1929:
+        if 1918 <= year <= 1928:
             self[date(year, MAR, 18)] = "День паризької комуни"
 
 
