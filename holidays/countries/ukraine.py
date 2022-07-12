@@ -31,7 +31,7 @@ class Ukraine(HolidayBase):
     def _populate(self, year):
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918
-        if year < 1918:
+        if year <= 1917:
             return
 
         # New Year's Day
@@ -68,13 +68,13 @@ class Ukraine(HolidayBase):
         # Victory Day
         name = "День перемоги"
 
-        if 1945 <= year <= 1946:
-            self[date(year, MAY, 9)] = name
-            self[date(year, SEP, 3)] = "День перемоги над Японією"
+        if year >= 2016:
+            self[date(year, MAY, 9)] = "День перемоги над нацизмом у Другій світовій війні"
         elif 1965 <= year <= 2015:
             self[date(year, MAY, 9)] = name
-        elif year >= 2016:
-            self[date(year, MAY, 9)] = "День перемоги над нацизмом у Другій світовій війні"
+        elif 1945 <= year <= 1946:
+            self[date(year, MAY, 9)] = name
+            self[date(year, SEP, 3)] = "День перемоги над Японією"
 
         # Constitution Day
         if year >= 1997:
@@ -105,7 +105,7 @@ class Ukraine(HolidayBase):
         # October Revolution
         if 1918 <= year <= 1999:
             if year <= 1991:
-                name = "Річниця Великої Жовтневої Cоціалістичної Революції"
+                name = "Річниця Великої Жовтневої Соціалістичної Революції"
             else:
                 name = "Річниця жовтневого перевороту"
             self[date(year, NOV, 7)] = name
